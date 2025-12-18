@@ -15,18 +15,24 @@ class Usuario
     // Método para verificar usuario y contraseña
     public function login($idusuario, $password)      // para un objeto usuario, se puede invocar el método login()
     {                                                 // si tuviéramos registro, también se declararía un método para ello...
-        $query = "SELECT * FROM " . $this->tabla_nombre . " WHERE idusuario = ? AND password = ? LIMIT 0,1";
+        // Modificamos la query para buscar solo por usuario, la contraseña se verifica después con el hash
+        $query = "SELECT * FROM " . $this->tabla_nombre . " WHERE idusuario = ? LIMIT 0,1";
         $stmt = $this->PDO->prepare($query);
         $stmt->bindParam(1, $idusuario);
-        $stmt->bindParam(2, $password);
+        // Ya no vinculamos la contraseña aquí porque compararemos el hash en PHP
         $stmt->execute();
 
         $num = $stmt->rowCount(); 
 
         if ($num > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            return $row; // Devuelve los datos del usuario
+            
+            // Aquí usamos password_verify para comparar la contraseña plana con el hash de la BD
+            if (password_verify($password, $row['password'])) {
+                return $row; // Devuelve los datos del usuario
+            }
         }
         return false; // Usuario no encontrado
     }
 }
+?>
