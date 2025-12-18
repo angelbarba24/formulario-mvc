@@ -13,6 +13,7 @@ Un sistema de autenticación de usuarios robusto y modular desarrollado en **PHP
 - **Enrutamiento:** Un único punto de entrada (`index.php`) que gestiona las peticiones.
 
 ### 🔒 Seguridad Implementada
+- **Hashing de Contraseñas:** Las contraseñas **nunca** se almacenan en texto plano. Se utiliza `password_hash()` (algoritmo Bcrypt) para el cifrado y `password_verify()` para la autenticación segura.
 - **Protección CSRF:** Generación y validación de tokens únicos por sesión para evitar falsificación de peticiones en sitios cruzados.
 - **Protección contra Fuerza Bruta:** Bloqueo temporal del usuario tras 5 intentos fallidos de inicio de sesión.
 - **Sesiones Seguras:**
@@ -23,9 +24,10 @@ Un sistema de autenticación de usuarios robusto y modular desarrollado en **PHP
 - **Prevención de SQL Injection:** Uso de *Prepared Statements* (PDO) en todas las consultas a base de datos.
 
 ### 🎨 Interfaz (UI)
-- **Diseño Responsivo:** Adaptable a móviles y escritorio.
+- **Diseño Responsivo:** Adaptable a móviles y escritorio con Modo Oscuro (Dark Mode).
 - **Feedback Visual:** Alertas de error y éxito claras para el usuario.
 - **Validación Frontend:** Validación en tiempo real con JavaScript antes de enviar el formulario.
+- **UX Mejorada:** Botón para mostrar/ocultar contraseña.
 
 ## 📂 Estructura del Proyecto
 
