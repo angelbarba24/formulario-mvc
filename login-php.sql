@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-12-2025 a las 21:20:34
+-- Tiempo de generación: 18-12-2025 a las 17:42:51
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -40,8 +40,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`coduser`, `idusuario`, `password`, `nombre`, `apellido`) VALUES
-(1, 'angel-login', 'Hola1234*123', 'Ángel', 'Barba'),
-(2, 'Pepe', 'pepe123', 'Pepe', 'Domínguez');
+(1, 'angel-login', '$2y$10$5rA7Bn0xIfteeS7XyA/w8.VBcuZxehSoLAVwmGjGQ9DHqMTBq4s12', 'Ángel', 'Barba'),
+(2, 'Pepe', '$2y$10$mpvwLq27qarX4qZjDAmTEO6YQgCrtFTsVCEaLKmPWVdwM7RqmCOLW', 'Pepe', 'Domínguez');
 
 --
 -- Índices para tablas volcadas

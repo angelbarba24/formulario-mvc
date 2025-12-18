@@ -27,6 +27,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Formulario</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     </head>
     <body class="bg-light">
         <div class="container d-flex justify-content-center align-items-center vh-100">
@@ -50,11 +51,18 @@
                         <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Introduce tu usuario">
                         <div id="usuarioHelp" class="form-text text-danger" hidden>El usuario es obligatorio.</div>
                     </div>
+
                     <div class="mb-3">
                         <label for="password" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Introduce tu contraseña">
+                        <div class="input-group">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Introduce tu contraseña">
+                            <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                        </div>
                         <div id="passwordHelp" class="form-text text-danger" hidden>La contraseña es obligatoria.</div>
                     </div>
+
                     <div class="d-grid">
                         <button type="submit" class="btn btn-primary">Entrar</button>
                     </div>
@@ -64,4 +72,21 @@
     </body>
     <script src="./views/js/validaciones.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('togglePassword').addEventListener('click', function () {
+            const passwordInput = document.getElementById('password');
+            const icon = this.querySelector('i');
+
+            // Alternar el tipo de input
+            if (passwordInput.getAttribute('type') === 'password') {
+                passwordInput.setAttribute('type', 'text');
+                icon.classList.remove('bi-eye');
+                icon.classList.add('bi-eye-slash'); // Cambia a ojo tachado
+            } else {
+                passwordInput.setAttribute('type', 'password');
+                icon.classList.remove('bi-eye-slash');
+                icon.classList.add('bi-eye'); // Cambia a ojo normal
+            }
+        });
+    </script>
 </html>
